@@ -21,12 +21,12 @@ let NavBar: FC<Props> = ({ }) => {
                 <Link to={'/'}><h4 className='font-mb text-2xs text-text-500 hover:text-brand-500'>Home</h4></Link>
                 <Link to={'https://www.prajwolneupane.com.np/'} target='blank'><h4 className='font-mb text-2xs text-text-500 hover:text-brand-500'>About Us</h4></Link>
                 <Link to={'https://www.prajwolneupane.com.np/'} target='blank'> <h4 className='font-mb text-2xs text-text-500 hover:text-brand-500'>Contact</h4></Link>
-                <div className='relative inline-block'>
+                <Link to={'/cart'} className='relative inline-block'>
                     <i className="uil uil-shopping-cart text-text-500 text-lg hover:text-brand-500 cursor-pointer"></i>
                     <div className='badge'>
                         <p className='text-3xs text-background'>1</p>
                     </div>
-                </div>
+                </Link>
             </div>
         </div>
     )
