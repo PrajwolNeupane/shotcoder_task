@@ -7,7 +7,7 @@ interface Props {
 
 let NavBar: FC<Props> = ({ }) => {
     return (
-        <div className='flex flex-col md:flex-row md:justify-between  gap-2  items-center py-5 px-[5%] bg-background sticky top-0'>
+        <div className='flex flex-col md:flex-row md:justify-between  gap-2  items-center py-5 px-[5%] bg-background sticky top-0 z-[4]'>
             <h2 className='font-b text-lg leading-[90%] text-brand-500'>
                 SHOT<br /><span className='text-text-500'>SHOP</span>
             </h2>
