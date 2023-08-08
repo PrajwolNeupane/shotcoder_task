@@ -20,7 +20,7 @@ let HomePage: FC<Props> = ({ }) => {
         <>
             <Header />
             {
-                products.length == 0 ? <ProductLoader /> : <div className='flex flex-row w-[100%] flex-wrap items-stretch content-stretch justify-center md:gap-5  xs:gap-4 gap-3 md:px-[5%] px-[3%] py-[30px] bg-background'>
+                products.length == 0 ? <ProductLoader /> : <div className='flex flex-row w-[100%] flex-wrap items-stretch content-stretch justify-start md:gap-5  xs:gap-4 gap-3 md:px-[5%] px-[3%] py-[30px] bg-background'>
                     {
                         products?.map((curr: ProductInteface | null, indx: number) => (
                             <Link to={`product/${curr?.id}`} className='flex flex-col gap-1 md:w-[220px] xs:w-[200px] w-[170px] bg-white p-4 shadow-md rounded-[5px]' key={indx}>
