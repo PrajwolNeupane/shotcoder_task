@@ -7,9 +7,10 @@ export default {
   theme: {
     extend: {
       screens: {
-        sm: '480px',
-        md: '768px',
-        lg: '976px',
+        xs:'400px',
+        sm: '600px',
+        md: '900px',
+        lg: '1100px',
         xl: '1440px',
       },
       colors: {
