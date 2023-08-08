@@ -1,10 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { apiSlice } from "./api/apiSlice";
-
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
+import productsReducer from "./reducer/productsReducer";
 
 export const store = configureStore({
   reducer: {
+    Products:productsReducer,
     [apiSlice.reducerPath]: apiSlice.reducer,
   },
   middleware: (getDefaultMiddleware) =>
