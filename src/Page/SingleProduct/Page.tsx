@@ -6,6 +6,7 @@ import StarBox from '../../Components/StarBox';
 import { FiPlus, FiMinus } from "react-icons/fi";
 import { useAppSelector } from '../../app/store';
 import { SimilarProductLoader, SingleProductLoader } from './Loader';
+import Error from './Error';
 
 let SingleProduct: FC<{}> = ({ }) => {
 
@@ -28,6 +29,7 @@ let SingleProduct: FC<{}> = ({ }) => {
             }
         }
         fetchSingleProduct();
+        console.log(productData);
 
     }, [id]);
 
@@ -45,6 +47,16 @@ let SingleProduct: FC<{}> = ({ }) => {
             setSimilarProductLoading(false);
         }
     }, [productData]);
+
+    // Need to handle in this way as fakestore api doesn't send api failure response
+    //  when we provide wrong product id
+    if (!isLoading && productData == null) {
+        return (
+            <>
+                <Error />
+            </>
+        )
+    }
 
     return (
         <div className='flex flex-col w-[100%] justify-center md:gap-5  xs:gap-4 gap-3 md:px-[5%] px-[3%] sm:py-[30px] py-[15px] bg-background'>
