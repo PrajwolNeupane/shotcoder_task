@@ -3,11 +3,13 @@ import { apiSlice } from "./api/apiSlice";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import productsReducer from "./reducer/productsReducer";
 import cartReducer from "./reducer/cartReducer";
+import searchReducer from "./reducer/searchReducer";
 
 export const store = configureStore({
   reducer: {
     Products:productsReducer,
     Cart:cartReducer,
+    Search:searchReducer,
     [apiSlice.reducerPath]: apiSlice.reducer,
   },
   middleware: (getDefaultMiddleware) =>

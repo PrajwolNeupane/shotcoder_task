@@ -6,6 +6,8 @@ import { useGetProductsMutation } from '../app/api/productsApiSlice';
 import { setProducts } from '../app/reducer/productsReducer';
 import { getCartFromStorage } from '../app/api/cartSlice';
 import { setCart } from '../app/reducer/cartReducer';
+import { setSearch } from '../app/reducer/searchReducer';
+import ShortcutProvider from '../app/provider/ShortCutProvider';
 
 interface Props {
 
@@ -17,7 +19,7 @@ let MainLayout: FC<Props> = ({ }) => {
 
     useEffect(() => {
         window.scrollTo(0, 0);
-        // dispatch(setSearch(false));
+        dispatch(setSearch(false));
     }, [pathname]);
 
     const [getProducts] = useGetProductsMutation();
@@ -40,10 +42,10 @@ let MainLayout: FC<Props> = ({ }) => {
 
 
     return (
-        <>
+        <ShortcutProvider>
             <NavBar />
             <Outlet />
-        </>
+        </ShortcutProvider>
     )
 }
 export default MainLayout;

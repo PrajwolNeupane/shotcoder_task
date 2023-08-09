@@ -10,7 +10,7 @@
 
 @layer components {
   .shortcut-key {
-    @apply font-mono font-sb text-text-500 text-3xs bg-brand-200 p-1
+    @apply font-mono font-sb text-text-500 text-3xs bg-brand-200 p-1 cursor-pointer
   }
   .badge {
     @apply flex items-center justify-center absolute w-[20px] h-[20px] translate-x-[15px] translate-y-[-40px] bg-brand-600  rounded-[50%]
