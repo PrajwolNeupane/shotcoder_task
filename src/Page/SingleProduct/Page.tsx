@@ -7,11 +7,15 @@ import { FiPlus, FiMinus } from "react-icons/fi";
 import { useAppSelector } from '../../app/store';
 import { SimilarProductLoader, SingleProductLoader } from './Loader';
 import Error from './Error';
+import { useDispatch } from 'react-redux';
+import { addCart } from '../../app/reducer/cartReducer';
+import { setCartToStorage } from '../../app/api/cartSlice';
 
 let SingleProduct: FC<{}> = ({ }) => {
 
     const { id } = useParams();
     const { products } = useAppSelector((state) => state.Products);
+    const dispatch = useDispatch();
     const [getSingleProduct, { isLoading }] = useGetSingleProductMutation();
     const [productData, setProductData] = useState<ProductInteface | null>(null);
     const [count, setCount] = useState<number>(1);
@@ -78,7 +82,11 @@ let SingleProduct: FC<{}> = ({ }) => {
                                 <FiPlus className="sm:text-lg text-md text-text-500" />
                             </button>
                         </div>
-                        <button className='py-2 sm:w-[220px] w-[100%] text-white bg-text-300 hover:bg-text-400 shadow-md rounded-[5px]'>Add to Cart</button>
+                        <button className='py-2 sm:w-[220px] w-[100%] text-white bg-text-300 hover:bg-text-400 shadow-md rounded-[5px]' onClick={()=>{
+                            dispatch(addCart(productData!));
+                            setCartToStorage(productData);
+                            
+                        }}>Add to Cart</button>
                     </div>
                 </div>
             }

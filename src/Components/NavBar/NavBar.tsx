@@ -1,11 +1,15 @@
 import { FC } from 'react';
 import { Link } from 'react-router-dom';
+import { useAppSelector } from '../../app/store';
 
 interface Props {
 
 }
 
 let NavBar: FC<Props> = ({ }) => {
+
+    const {cart} = useAppSelector((state) => state.Cart);
+
     return (
         <div className='flex flex-col md:flex-row md:justify-between  gap-2  items-center py-5 px-[5%] bg-background sticky top-0 z-[4]'>
             <h2 className='font-b text-lg leading-[90%] text-brand-500'>
@@ -24,7 +28,7 @@ let NavBar: FC<Props> = ({ }) => {
                 <Link to={'/cart'} className='relative inline-block'>
                     <i className="uil uil-shopping-cart text-text-500 text-lg hover:text-brand-500 cursor-pointer"></i>
                     <div className='badge'>
-                        <p className='text-3xs text-background'>1</p>
+                        <p className='text-3xs text-background'>{cart.length}</p>
                     </div>
                 </Link>
             </div>

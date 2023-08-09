@@ -4,6 +4,8 @@ import NavBar from '../Components/NavBar/NavBar';
 import { useAppDispatch } from '../app/store';
 import { useGetProductsMutation } from '../app/api/productsApiSlice';
 import { setProducts } from '../app/reducer/productsReducer';
+import { getCartFromStorage } from '../app/api/cartSlice';
+import { setCart } from '../app/reducer/cartReducer';
 
 interface Props {
 
@@ -32,7 +34,8 @@ let MainLayout: FC<Props> = ({ }) => {
             }
 
         }
-            fetchProducts();
+        fetchProducts();
+        dispatch(setCart(getCartFromStorage()));
     }, []);
 
 
