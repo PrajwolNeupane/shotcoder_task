@@ -8,6 +8,7 @@ import { getCartFromStorage } from '../app/api/cartSlice';
 import { setCart } from '../app/reducer/cartReducer';
 import { setSearch } from '../app/reducer/searchReducer';
 import ShortcutProvider from '../app/provider/ShortCutProvider';
+import SearchModal from '../Components/NavBar/SearchModal';
 
 interface Props {
 
@@ -44,6 +45,7 @@ let MainLayout: FC<Props> = ({ }) => {
     return (
         <ShortcutProvider>
             <NavBar />
+            <SearchModal />
             <Outlet />
         </ShortcutProvider>
     )
