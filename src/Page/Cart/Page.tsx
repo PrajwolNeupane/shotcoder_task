@@ -6,12 +6,14 @@ import { GoTrash } from "react-icons/go";
 import { removeCart } from "../../app/reducer/cartReducer";
 import totalCartItemFinder from "../../helper/totalCartItemsFinder";
 import totalPriceFinder from "../../helper/totalPriceFinder";
+import {useNavigate } from "react-router-dom";
 
 
 function Page() {
 
   const { cart } = useAppSelector((state) => state.Cart);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   return (
     <div className="flex flex-col w-[100%] justify-center md:gap-5  xs:gap-4 gap-3 md:px-[5%] px-[3%] sm:py-[30px] py-[15px] bg-background">
@@ -30,25 +32,25 @@ function Page() {
           <tbody>
             {
               cart?.map((curr: CartItemInteface | null, indx: number) => (
-                <tr>
-                  <td>
-                    {indx + 1}
-                  </td>
-                  <td className="flex md:flex-row flex-col gap-3">
-                    <img src={curr?.image} className="md:w-[15%] w-[50%] aspect-[1/1.2] object-contain" />
-                    <h3 className="text-3xs font-mb leading-[120%] text-text-500">{curr?.title}
-                      <br />
-                      <span className="text-3xs font-r leading-[150%] text-text-300 md:block hidden ">{curr?.description}</span>
-                    </h3>
+                  <tr onClick={()=>{navigate(`/product/${curr?.id}`)}} className="cursor-pointer">
+                    <td>
+                      {indx + 1}
+                    </td>
+                    <td className="flex md:flex-row flex-col gap-3">
+                      <img src={curr?.image} className="md:w-[15%] w-[50%] aspect-[1/1.2] object-contain" />
+                      <h3 className="text-3xs font-mb leading-[120%] text-text-500">{curr?.title}
+                        <br />
+                        <span className="text-3xs font-r leading-[150%] text-text-300 md:block hidden ">{curr?.description}</span>
+                      </h3>
 
-                  </td>
-                  <td className="text-3xs font-mb leading-[120%] text-text-500">$ {Number(curr?.price) * curr?.quantity!}</td>
-                  <td className="text-3xs font-mb leading-[120%] text-text-500">{curr?.quantity}</td>
-                  <td><button onClick={() => {
-                    dispatch(removeCart(curr!));
-                    removeCartFromStorage(curr!);
-                  }}><GoTrash className="text-sm font-mb leading-[120%] text-text-500" /></button></td>
-                </tr>
+                    </td>
+                    <td className="text-3xs font-mb leading-[120%] text-text-500">$ {Number(curr?.price) * curr?.quantity!}</td>
+                    <td className="text-3xs font-mb leading-[120%] text-text-500">{curr?.quantity}</td>
+                    <td><button onClick={() => {
+                      dispatch(removeCart(curr!));
+                      removeCartFromStorage(curr!);
+                    }}><GoTrash className="text-sm font-mb leading-[120%] text-text-500" /></button></td>
+                  </tr>
               ))
             }
           </tbody>
