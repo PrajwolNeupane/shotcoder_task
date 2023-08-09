@@ -1,11 +1,15 @@
+import { useDispatch } from "react-redux";
 import { CartItemInteface } from "../../Interface";
+import { removeCartFromStorage } from "../../app/api/cartSlice";
 import { useAppSelector } from "../../app/store"
 import { GoTrash } from "react-icons/go";
+import { removeCart } from "../../app/reducer/cartReducer";
 
 
 function Page() {
 
   const { cart } = useAppSelector((state) => state.Cart);
+  const dispatch = useDispatch();
 
   return (
     <div className="flex flex-col w-[100%] justify-center md:gap-5  xs:gap-4 gap-3 md:px-[5%] px-[3%] sm:py-[30px] py-[15px] bg-background">
@@ -38,13 +42,16 @@ function Page() {
                   </td>
                   <td className="text-3xs font-mb leading-[120%] text-text-500">$ {Number(curr?.price) * curr?.quantity!}</td>
                   <td className="text-3xs font-mb leading-[120%] text-text-500">{curr?.quantity}</td>
-                  <td><button><GoTrash className="text-sm font-mb leading-[120%] text-text-500" /></button></td>
+                  <td><button onClick={()=>{
+                    dispatch(removeCart(curr!));
+                    removeCartFromStorage(curr!);
+                  }}><GoTrash className="text-sm font-mb leading-[120%] text-text-500" /></button></td>
                 </tr>
               ))
             }
           </tbody>
         </table>
-        <div className="flex flex-col bg-white w-[30%] h-[300px] border-spacing-[20px] border-separate rounded-[5px] shadow-md px-4 py-0">
+        <div className="flex flex-col bg-white w-[30%] min-h-[200px] border-spacing-[20px] border-separate rounded-[5px] shadow-md px-4 py-0">
           <h2 className='text-md font-sb text-text-500 mt-3 leading-[120%]'>Cart Total</h2>
           <table className="w-[90%]">
             <tbody>
