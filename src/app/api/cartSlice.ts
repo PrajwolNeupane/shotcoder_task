@@ -1,4 +1,6 @@
-export const setCartToStorage = (item: any) => {
+import { CartItemInteface } from "../../Interface";
+
+export const setCartToStorage = (item:CartItemInteface) => {
   var cartItems: string | null = localStorage.getItem("shot_shop-cart");
   if (cartItems) {
     var parsedItem: Array<any> = JSON.parse(cartItems);
@@ -9,10 +11,10 @@ export const setCartToStorage = (item: any) => {
   }
 };
 
-export const getCartFromStorage = ():Array<any> => {
+export const getCartFromStorage = ():Array<CartItemInteface> => {
   var rawItems: string | null = localStorage.getItem("shot_shop-cart");
   if (rawItems) {
-    var parsedItem: Array<any> = JSON.parse(rawItems);
+    var parsedItem: Array<CartItemInteface> = JSON.parse(rawItems);
     return parsedItem;
   } else {
     return [];

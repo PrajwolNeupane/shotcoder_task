@@ -82,10 +82,9 @@ let SingleProduct: FC<{}> = ({ }) => {
                                 <FiPlus className="sm:text-lg text-md text-text-500" />
                             </button>
                         </div>
-                        <button className='py-2 sm:w-[220px] w-[100%] text-white bg-text-300 hover:bg-text-400 shadow-md rounded-[5px]' onClick={()=>{
-                            dispatch(addCart(productData!));
-                            setCartToStorage(productData);
-                            
+                        <button className='py-2 sm:w-[220px] w-[100%] text-white bg-text-300 hover:bg-text-400 shadow-md rounded-[5px]' onClick={() => {
+                            dispatch(addCart({ ...productData!, quantity: count }));
+                            setCartToStorage({ ...productData!, quantity: count });
                         }}>Add to Cart</button>
                     </div>
                 </div>
