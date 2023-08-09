@@ -7,7 +7,7 @@ export default {
   theme: {
     extend: {
       screens: {
-        xs:'400px',
+        xs: '400px',
         sm: '600px',
         md: '900px',
         lg: '1100px',
@@ -25,9 +25,10 @@ export default {
         'text-400': "#232a38",
         "text-300": "#293140",
         "text-200": "#374052",
+        'light-600': "#ebe8e8",
         'light-500': '#FAF7F7',
         'light-400': '#FFFFFF',
-        'yellow-500':"#D69E2E"
+        'yellow-500': "#D69E2E"
       },
       fontFamily: {
         body: "'Poppins',sans-serif",
