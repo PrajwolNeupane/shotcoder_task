@@ -32,11 +32,11 @@ function Page() {
           <tbody>
             {
               cart?.map((curr: CartItemInteface | null, indx: number) => (
-                  <tr onClick={()=>{navigate(`/product/${curr?.id}`)}} className="cursor-pointer">
+                  <tr className="cursor-pointer">
                     <td>
                       {indx + 1}
                     </td>
-                    <td className="flex md:flex-row flex-col gap-3">
+                    <td className="flex md:flex-row flex-col gap-3"  onClick={()=>{navigate(`/product/${curr?.id}`)}} >
                       <img src={curr?.image} className="md:w-[15%] w-[50%] aspect-[1/1.2] object-contain" />
                       <h3 className="text-3xs font-mb leading-[120%] text-text-500">{curr?.title}
                         <br />
